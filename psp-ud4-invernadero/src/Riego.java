@@ -19,7 +19,7 @@ public class Riego extends Thread{
             lTotales += 2.5;
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(700);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
