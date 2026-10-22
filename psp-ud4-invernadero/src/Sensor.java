@@ -4,7 +4,7 @@ public abstract class Sensor implements Runnable{
     private String nombre;
     private String unidad;
     private int periodo;
-    private int nLecturas;
+    private int nLecturas = 5;
     private double uMinimo;
     private double uMaximo;
     private double suma = 0;
@@ -26,7 +26,7 @@ public abstract class Sensor implements Runnable{
     public void run() {
 
         String nombre = Thread.currentThread().getName();
-        for (int i = 1; i < nLecturas; i++) {
+        for (int i = 0; i < nLecturas; i++) {
 
             double valor = medir();
             suma += valor;
@@ -36,11 +36,11 @@ public abstract class Sensor implements Runnable{
             String alerta = (valor < uMinimo || valor > uMaximo) ? " A ALERTA": "";
             if (!alerta.isEmpty()) alertas++;
 
-            System.out.printf("%s [%s] %s: %.2f %s%s\n", LocalTime.now(), Thread.currentThread().getName(), nombre, valor, unidad, alertas);
+            System.out.printf("%s [%s] %s: %.2f %s%s\n", LocalTime.now(), Thread.currentThread().getName(), this.nombre, valor, unidad, alertas);
 
             try {
 
-                Thread.sleep(1000);
+                Thread.sleep(periodo);
 
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -56,8 +56,8 @@ public abstract class Sensor implements Runnable{
 
         System.out.println("Informe de: " + nombre + "\n" +
                            "Medias: " + (suma/nLecturas) + "\n" +
-                           "Mínimo: " + uMinimo + "\n" +
-                           "Máximo: " + uMaximo + "\n" +
+                           "Mínimo: " + min + "\n" +
+                           "Máximo: " + max + "\n" +
                            "Alertas: " + alertas);
 
     }
