@@ -4,14 +4,14 @@ public class Temperatura extends Sensor{
 
     public Temperatura() {
 
-        super("Temperatura", "°C", 400, 18.0, 30.0);
+        super("Temperatura", "°C", 600, 50.0, 80.0);
 
     }
 
     @Override
     public double medir() {
 
-        return ThreadLocalRandom.current().nextDouble(15.0, 35.0);
+        return ThreadLocalRandom.current().nextDouble(40.0, 90.0);
 
     }
 }

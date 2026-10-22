@@ -1,10 +1,10 @@
 import java.time.LocalTime;
 
-public class Riego extends Thread{
+public class ProgramadorRiego extends Thread{
 
     private double lTotales = 0;
 
-    public Riego() {
+    public ProgramadorRiego() {
 
         super("riego");
 
@@ -15,7 +15,7 @@ public class Riego extends Thread{
 
         for(int i = 0; i < 5; i++) {
 
-            System.out.printf("%s [%s] Válvula ABIERTA\n", LocalTime.now(), getName());
+            System.out.printf("%s [%s] Válvula abierta\n", LocalTime.now(), getName());
             lTotales += 2.5;
 
             try {
@@ -23,6 +23,8 @@ public class Riego extends Thread{
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
+            System.out.printf("%s [%s] Válvula cerrada\n", LocalTime.now(), getName());
         }
     }
 
