@@ -3,6 +3,8 @@ import java.io.IOException;
 public class Fase3_Experimentos {
     public static void main(String[] args) throws InterruptedException {
 
+        System.out.println("Inicio de la Fase 3 (Experimentos)");
+
         System.out.println("Experimento A: ");
         Temperatura tempA = new Temperatura();
         Thread hiloA = new Thread(tempA, "sensor-TempA");
