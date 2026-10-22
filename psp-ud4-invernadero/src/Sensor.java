@@ -2,17 +2,17 @@ import java.time.LocalTime;
 
 public abstract class Sensor implements Runnable{
     private String nombre;
-    private int unidad;
+    private String unidad;
     private int periodo;
     private int nLecturas;
-    private int uMinimo;
-    private int uMaximo;
+    private double uMinimo;
+    private double uMaximo;
     private double suma = 0;
     private double min = Double.MAX_VALUE;
     private double max = Double.MIN_VALUE;
     private int alertas;
 
-    public Sensor(String nombre, int unidad, int periodo, int uMinimo, int uMaximo) {
+    public Sensor(String nombre, String unidad, int periodo, double uMinimo, double uMaximo) {
         this.nombre = nombre;
         this.unidad = unidad;
         this.periodo = periodo;
